@@ -1,0 +1,131 @@
+---
+import type { MediaValue } from "emdash";
+
+interface Props {
+	image: MediaValue | string;
+	alt: string;
+	title?: string;
+	description?: string;
+	ratio?: string;
+}
+
+const { image, alt, title, description, ratio = "2 / 3" } = Astro.props;
+
+// Build image URL from MediaValue or string
+function getImageSrc(img: MediaValue | string): string {
+	if (typeof img === "string") return img;
+	if (typeof img.src === "string") {
+		return img.src.startsWith("http")
+			? img.src
+			: `${Astro.url.origin}${img.src}`;
+	}
+	const meta = img.meta as Record<string, unknown> | undefined;
+	const storageKey =
+		(typeof meta?.storageKey === "string" ? meta.storageKey : undefined) ||
+		(typeof img.id === "string" ? img.id : undefined);
+	if (storageKey) {
+		return `${Astro.url.origin}/_emdash/api/media/file/${storageKey}`;
+	}
+	return "";
+}
+
+const src = getImageSrc(image);
+const pinDescription = description || title || alt;
+---
+
+<figure class="pinterest-image">
+	<div class="pinterest-image-wrapper" style={`aspect-ratio: ${ratio};`}>
+		<img
+			src={src}
+			alt={alt}
+			data-pin-description={pinDescription}
+			data-pin-url={Astro.url.toString()}
+			loading="lazy"
+			decoding="async"
+		/>
+		<button class="pin-it-btn" aria-label="Save to Pinterest" onclick="window.open('https://pinterest.com/pin/create/button/?url=' + encodeURIComponent(window.location.href) + '&media=' + encodeURIComponent(this.closest('.pinterest-image').querySelector('img').src) + '&description=' + encodeURIComponent(this.closest('.pinterest-image').querySelector('img').getAttribute('data-pin-description') || ''), '_blank', 'noopener,noreferrer')">
+			<span class="pin-icon">📌</span>
+			<span class="pin-text">Save</span>
+		</button>
+	</div>
+	{title && <figcaption class="pinterest-caption">{title}</figcaption>}
+</figure>
+
+<style>
+	.pinterest-image {
+		margin: 0;
+		position: relative;
+	}
+
+	.pinterest-image-wrapper {
+		position: relative;
+		overflow: hidden;
+		border-radius: var(--radius-lg);
+		background: var(--color-surface);
+	}
+
+	.pinterest-image-wrapper img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+		transition: transform 0.3s ease;
+	}
+
+	.pinterest-image-wrapper:hover img {
+		transform: scale(1.03);
+	}
+
+	.pin-it-btn {
+		position: absolute;
+		bottom: var(--spacing-3);
+		right: var(--spacing-3);
+		display: flex;
+		align-items: center;
+		gap: var(--spacing-1);
+		padding: var(--spacing-2) var(--spacing-3);
+		background: #e60023;
+		color: white;
+		border: none;
+		border-radius: var(--radius);
+		font-size: var(--font-size-sm);
+		font-weight: 600;
+		cursor: pointer;
+		opacity: 0;
+		transform: translateY(4px);
+		transition: opacity 0.2s ease, transform 0.2s ease, background 0.15s ease;
+	}
+
+	.pinterest-image-wrapper:hover .pin-it-btn,
+	.pinterest-image-wrapper:focus-within .pin-it-btn {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	.pin-it-btn:hover {
+		background: #c5001e;
+	}
+
+	.pin-icon {
+		font-size: 1rem;
+	}
+
+	.pin-text {
+		font-family: var(--font-sans);
+	}
+
+	.pinterest-caption {
+		font-size: var(--font-size-sm);
+		color: var(--color-text-secondary);
+		margin-top: var(--spacing-2);
+		text-align: center;
+		font-style: italic;
+	}
+
+	@media (max-width: 640px) {
+		.pin-it-btn {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+</style>

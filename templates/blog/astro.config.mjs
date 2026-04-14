@@ -28,10 +28,17 @@ export default defineConfig({
 	fonts: [
 		{
 			provider: fontProviders.google(),
-			name: "Inter",
+			name: "Lato",
 			cssVariable: "--font-sans",
-			weights: [400, 500, 600, 700],
+			weights: [300, 400, 700],
 			fallbacks: ["sans-serif"],
+		},
+		{
+			provider: fontProviders.google(),
+			name: "Playfair Display",
+			cssVariable: "--font-serif",
+			weights: [400, 600, 700],
+			fallbacks: ["Georgia", "serif"],
 		},
 		{
 			provider: fontProviders.google(),

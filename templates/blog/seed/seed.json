@@ -2,14 +2,14 @@
 	"$schema": "https://emdashcms.com/seed.schema.json",
 	"version": "1",
 	"meta": {
-		"name": "Blog Starter",
-		"description": "A blog with posts and pages",
-		"author": "EmDash"
+		"name": "NicheAndNook",
+		"description": "Home decor blog for every corner of your home",
+		"author": "NicheAndNook"
 	},
 
 	"settings": {
-		"title": "My Blog",
-		"tagline": "Thoughts on building for the web"
+		"title": "NicheAndNook",
+		"tagline": "Ideas for Every Corner of Your Home"
 	},
 
 	"collections": [
@@ -76,9 +76,54 @@
 			"hierarchical": true,
 			"collections": ["posts"],
 			"terms": [
-				{ "slug": "development", "label": "Development" },
-				{ "slug": "design", "label": "Design" },
-				{ "slug": "notes", "label": "Notes" }
+				{
+					"slug": "bedroom",
+					"label": "Bedroom Ideas",
+					"children": [
+						{ "slug": "small-bedroom", "label": "Small Bedroom" },
+						{ "slug": "master-bedroom", "label": "Master Bedroom" },
+						{ "slug": "bedroom-decor-on-budget", "label": "Bedroom Decor on Budget" }
+					]
+				},
+				{
+					"slug": "living-room",
+					"label": "Living Room",
+					"children": [
+						{ "slug": "minimalist-living-room", "label": "Minimalist Living Room" },
+						{ "slug": "cozy-living-room", "label": "Cozy Living Room" },
+						{ "slug": "small-space-living", "label": "Small Space Living" }
+					]
+				},
+				{
+					"slug": "kitchen",
+					"label": "Kitchen",
+					"children": [
+						{ "slug": "kitchen-organization", "label": "Kitchen Organization" },
+						{ "slug": "kitchen-decor", "label": "Kitchen Decor" },
+						{ "slug": "budget-kitchen-ideas", "label": "Budget Kitchen Ideas" }
+					]
+				},
+				{
+					"slug": "diy",
+					"label": "DIY & Budget",
+					"children": [
+						{ "slug": "diy-decor-projects", "label": "DIY Decor Projects" },
+						{ "slug": "thrift-store-makeovers", "label": "Thrift Store Makeovers" }
+					]
+				},
+				{
+					"slug": "minimalist",
+					"label": "Minimalist Style"
+				},
+				{
+					"slug": "style-guides",
+					"label": "Style Guides",
+					"children": [
+						{ "slug": "bohemian", "label": "Bohemian" },
+						{ "slug": "farmhouse", "label": "Farmhouse" },
+						{ "slug": "modern", "label": "Modern" }
+					]
+				}
 			]
 		},
 		{
@@ -88,25 +133,23 @@
 			"hierarchical": false,
 			"collections": ["posts"],
 			"terms": [
-				{ "slug": "webdev", "label": "Web Development" },
-				{ "slug": "opinion", "label": "Opinion" },
-				{ "slug": "tools", "label": "Tools" },
-				{ "slug": "creativity", "label": "Creativity" }
+				{ "slug": "budget-friendly", "label": "Budget Friendly" },
+				{ "slug": "small-space", "label": "Small Space" },
+				{ "slug": "diy", "label": "DIY" },
+				{ "slug": "organization", "label": "Organization" },
+				{ "slug": "color-palette", "label": "Color Palette" },
+				{ "slug": "before-after", "label": "Before & After" },
+				{ "slug": "seasonal", "label": "Seasonal" },
+				{ "slug": "renter-friendly", "label": "Renter Friendly" }
 			]
 		}
 	],
 
 	"bylines": [
 		{
-			"id": "byline-editorial",
-			"slug": "emdash-editorial",
-			"displayName": "EmDash Editorial"
-		},
-		{
-			"id": "byline-guest",
-			"slug": "guest-contributor",
-			"displayName": "Guest Contributor",
-			"isGuest": true
+			"id": "byline-team",
+			"slug": "nicheandnook-team",
+			"displayName": "NicheAndNook Team"
 		}
 	],
 
@@ -116,8 +159,57 @@
 			"label": "Primary Navigation",
 			"items": [
 				{ "type": "custom", "label": "Home", "url": "/" },
-				{ "type": "custom", "label": "About", "url": "/pages/about" },
-				{ "type": "custom", "label": "Posts", "url": "/posts" }
+				{
+					"type": "custom",
+					"label": "Bedroom Ideas",
+					"url": "/category/bedroom",
+					"children": [
+						{ "type": "custom", "label": "Small Bedroom", "url": "/category/small-bedroom" },
+						{ "type": "custom", "label": "Master Bedroom", "url": "/category/master-bedroom" },
+						{ "type": "custom", "label": "Bedroom Decor on Budget", "url": "/category/bedroom-decor-on-budget" }
+					]
+				},
+				{
+					"type": "custom",
+					"label": "Living Room",
+					"url": "/category/living-room",
+					"children": [
+						{ "type": "custom", "label": "Minimalist Living Room", "url": "/category/minimalist-living-room" },
+						{ "type": "custom", "label": "Cozy Living Room", "url": "/category/cozy-living-room" },
+						{ "type": "custom", "label": "Small Space Living", "url": "/category/small-space-living" }
+					]
+				},
+				{
+					"type": "custom",
+					"label": "Kitchen",
+					"url": "/category/kitchen",
+					"children": [
+						{ "type": "custom", "label": "Kitchen Organization", "url": "/category/kitchen-organization" },
+						{ "type": "custom", "label": "Kitchen Decor", "url": "/category/kitchen-decor" },
+						{ "type": "custom", "label": "Budget Kitchen Ideas", "url": "/category/budget-kitchen-ideas" }
+					]
+				},
+				{
+					"type": "custom",
+					"label": "DIY & Budget",
+					"url": "/category/diy",
+					"children": [
+						{ "type": "custom", "label": "DIY Decor Projects", "url": "/category/diy-decor-projects" },
+						{ "type": "custom", "label": "Thrift Store Makeovers", "url": "/category/thrift-store-makeovers" }
+					]
+				},
+				{
+					"type": "custom",
+					"label": "Style Guides",
+					"url": "/category/style-guides",
+					"children": [
+						{ "type": "custom", "label": "Minimalist", "url": "/category/minimalist" },
+						{ "type": "custom", "label": "Bohemian", "url": "/category/bohemian" },
+						{ "type": "custom", "label": "Farmhouse", "url": "/category/farmhouse" },
+						{ "type": "custom", "label": "Modern", "url": "/category/modern" }
+					]
+				},
+				{ "type": "custom", "label": "About", "url": "/pages/about" }
 			]
 		}
 	],
@@ -146,19 +238,10 @@
 				{
 					"type": "component",
 					"componentId": "core:recent-posts",
-					"title": "Recent Posts",
+					"title": "Popular Posts",
 					"settings": {
 						"count": 5,
 						"showDate": true
-					}
-				},
-				{
-					"type": "component",
-					"componentId": "core:archives",
-					"title": "Archives",
-					"settings": {
-						"type": "monthly",
-						"limit": 6
 					}
 				}
 			]
@@ -170,7 +253,7 @@
 			"widgets": [
 				{
 					"type": "content",
-					"title": "About",
+					"title": "About NicheAndNook",
 					"content": [
 						{
 							"_type": "block",
@@ -178,7 +261,7 @@
 							"children": [
 								{
 									"_type": "span",
-									"text": "A blog about software, design, and the occasional stray thought."
+									"text": "NicheAndNook is your go-to resource for home decor inspiration. From cozy bedrooms to stylish kitchens, we share ideas to make every corner of your home beautiful."
 								}
 							]
 						}
@@ -199,7 +282,7 @@
 				{
 					"_type": "block",
 					"style": "h3",
-					"children": [{ "_type": "span", "text": "Stay in the loop" }]
+					"children": [{ "_type": "span", "text": "Get Inspired Weekly" }]
 				},
 				{
 					"_type": "block",
@@ -207,7 +290,7 @@
 					"children": [
 						{
 							"_type": "span",
-							"text": "Get notified when new posts are published. No spam, unsubscribe anytime."
+							"text": "Join thousands of home decor enthusiasts. Fresh ideas for every room, delivered to your inbox. No spam, unsubscribe anytime."
 						}
 					]
 				}
@@ -226,7 +309,7 @@
 					"children": [
 						{
 							"_type": "span",
-							"text": "A software developer who writes about building things on the web. Based somewhere with good coffee and reliable internet."
+							"text": "The NicheAndNook team is passionate about creating beautiful, functional living spaces. We believe great design doesn't have to come with a big price tag."
 						}
 					]
 				}
@@ -249,7 +332,7 @@
 							"children": [
 								{
 									"_type": "span",
-									"text": "A place for writing about software, design, and the occasional stray thought. No posting schedule, no newsletter funnel. Just things I wanted to write down."
+									"text": "Welcome to NicheAndNook — your destination for home decor inspiration, practical tips, and creative ideas for every room in your home."
 								}
 							]
 						},
@@ -259,7 +342,22 @@
 							"children": [
 								{
 									"_type": "span",
-									"text": "Built with Astro and EmDash. The source is open if you want to see how it works."
+									"text": "Whether you're decorating a small bedroom on a budget, looking for cozy living room ideas, or planning a kitchen makeover, we've got you covered. Our content focuses on affordable, achievable designs that anyone can implement."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [{ "_type": "span", "text": "Our Mission" }]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "We believe everyone deserves a home they love, regardless of budget or space constraints. Our goal is to make home decor accessible, inspiring, and fun."
 								}
 							]
 						}
@@ -270,16 +368,16 @@
 		"posts": [
 			{
 				"id": "post-1",
-				"slug": "building-for-the-long-term",
+				"slug": "cozy-bedroom-makeover-on-a-budget",
 				"status": "published",
 				"data": {
-					"title": "Building for the Long Term",
-					"excerpt": "The frameworks will change. The databases will change. What survives is the clarity of your thinking.",
+					"title": "Cozy Bedroom Makeover on a Budget: 10 Easy Ideas",
+					"excerpt": "Transform your bedroom into a cozy retreat without breaking the bank. These budget-friendly ideas will make your space feel like a luxury hotel.",
 					"featured_image": {
 						"$media": {
-							"url": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&h=800&fit=crop",
-							"alt": "Code on a monitor in a dark room",
-							"filename": "building-long-term.jpg"
+							"url": "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=1200&h=800&fit=crop",
+							"alt": "Cozy bedroom with warm lighting and neutral tones",
+							"filename": "cozy-bedroom-makeover.jpg"
 						}
 					},
 					"content": [
@@ -289,7 +387,7 @@
 							"children": [
 								{
 									"_type": "span",
-									"text": "Every few years the industry collectively decides that everything we've been doing is wrong and there's a better way. New frameworks, new paradigms, new build tools. The churn is relentless, and if you're not careful, you spend more time migrating than building."
+									"text": "Your bedroom should be a sanctuary — a place where you can unwind, recharge, and feel completely at ease. The good news? You don't need a massive budget to create that feeling. With a few thoughtful changes, you can transform your bedroom into the cozy retreat you've always wanted."
 								}
 							]
 						},
@@ -299,14 +397,14 @@
 							"children": [
 								{
 									"_type": "span",
-									"text": "I've been writing software long enough to have seen several of these cycles. jQuery to Backbone to Angular to React to whatever comes next. Each transition felt urgent at the time. Looking back, the things that actually mattered were rarely about the framework."
+									"text": "Here are ten budget-friendly ideas that will make a huge impact on your bedroom's comfort and style."
 								}
 							]
 						},
 						{
 							"_type": "block",
 							"style": "h2",
-							"children": [{ "_type": "span", "text": "What survives" }]
+							"children": [{ "_type": "span", "text": "1. Layer Your Bedding" }]
 						},
 						{
 							"_type": "block",
@@ -314,19 +412,14 @@
 							"children": [
 								{
 									"_type": "span",
-									"text": "Clean data models survive. Clear boundaries between systems survive. Good naming survives. The decision to keep things simple when you could have made them clever - that definitely survives."
+									"text": "The easiest way to make your bed look luxurious is to layer. Start with a fitted sheet, add a flat sheet, then a lightweight quilt or coverlet, and finish with a chunky throw blanket at the foot of the bed. Mix textures — linen, cotton, knit — for a look that feels both intentional and effortless."
 								}
 							]
 						},
 						{
 							"_type": "block",
-							"style": "normal",
-							"children": [
-								{
-									"_type": "span",
-									"text": "What doesn't survive is code that was written to impress, abstractions built for problems that never materialized, and architectures designed around a framework's opinions rather than the domain's reality."
-								}
-							]
+							"style": "h2",
+							"children": [{ "_type": "span", "text": "2. Add Warm Lighting" }]
 						},
 						{
 							"_type": "block",
@@ -334,33 +427,75 @@
 							"children": [
 								{
 									"_type": "span",
-									"text": "The best code I've written is boring. It reads like prose, does one thing well, and doesn't require a PhD in category theory to understand. The worst code I've written was technically impressive at the time."
+									"text": "Overhead lighting is the enemy of coziness. Replace harsh ceiling lights with warm-toned table lamps, string lights, or a simple bedside sconce. The soft glow will instantly make your room feel more inviting. Look for bulbs with a color temperature of 2700K for that warm, golden light."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [{ "_type": "span", "text": "3. Use Neutral, Calming Colors" }]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "You don't have to repaint your entire room. Even small changes — swapping out pillow covers, adding a cream-colored throw, or hanging neutral curtains — can shift the entire mood of the space. Think soft whites, warm grays, muted sage greens, and gentle taupes."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [{ "_type": "span", "text": "4. Bring in Natural Elements" }]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "A simple vase of dried eucalyptus, a wooden tray on your nightstand, or a woven basket for storage adds warmth and texture. Natural materials ground a space and make it feel more connected to the outdoors. Best of all, many of these items can be found at thrift stores or your own backyard."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [{ "_type": "span", "text": "5. Declutter Your Nightstand" }]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "A cluttered nightstand creates visual noise that disrupts calm. Keep it minimal: a lamp, a book, maybe a small plant. Everything else can go in a drawer or be removed entirely. The simplicity will make your whole room feel more serene."
 								}
 							]
 						}
 					]
 				},
-				"bylines": [
-					{ "byline": "byline-editorial" },
-					{ "byline": "byline-guest", "roleLabel": "Guest essay" }
-				],
+				"bylines": [{ "byline": "byline-team" }],
 				"taxonomies": {
-					"category": ["development"],
-					"tag": ["opinion"]
+					"category": ["bedroom", "bedroom-decor-on-budget"],
+					"tag": ["budget-friendly", "before-after"]
 				}
 			},
 			{
 				"id": "post-2",
-				"slug": "the-case-for-static",
+				"slug": "minimalist-living-room-design-tips",
 				"status": "published",
 				"data": {
-					"title": "The Case for Static",
-					"excerpt": "Static sites aren't a step backwards. They're what you get when you take performance and simplicity seriously.",
+					"title": "Minimalist Living Room Design: Less Really Is More",
+					"excerpt": "Discover how to create a minimalist living room that feels warm and inviting, not cold and empty.",
 					"featured_image": {
 						"$media": {
-							"url": "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1200&h=800&fit=crop",
-							"alt": "Laptop and coffee on a wooden table",
-							"filename": "case-for-static.jpg"
+							"url": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200&h=800&fit=crop",
+							"alt": "Minimalist living room with white sofa and natural light",
+							"filename": "minimalist-living-room.jpg"
 						}
 					},
 					"content": [
@@ -370,7 +505,7 @@
 							"children": [
 								{
 									"_type": "span",
-									"text": "There's a certain irony in the fact that the web started static, went dynamic, and is now swinging back toward static again. But the static sites of today aren't the hand-coded HTML pages of 1998. They're generated, optimized, and deployed to edge networks that serve them in milliseconds."
+									"text": "Minimalism doesn't mean living in an empty white box. Done right, a minimalist living room feels calm, curated, and deeply comfortable. The key is intentionality — every piece in the room should earn its place."
 								}
 							]
 						},
@@ -380,14 +515,14 @@
 							"children": [
 								{
 									"_type": "span",
-									"text": "The pitch for server-rendered everything was compelling: dynamic content, personalization, real-time data. But most sites don't need most of that most of the time. A blog post doesn't need to be rendered on every request. A product page doesn't change every second."
+									"text": "Here's how to create a living room that's minimal without feeling cold."
 								}
 							]
 						},
 						{
 							"_type": "block",
 							"style": "h2",
-							"children": [{ "_type": "span", "text": "The performance argument" }]
+							"children": [{ "_type": "span", "text": "Start with a Neutral Foundation" }]
 						},
 						{
 							"_type": "block",
@@ -395,40 +530,60 @@
 							"children": [
 								{
 									"_type": "span",
-									"text": "A static file served from a CDN is as fast as the web gets. No cold starts, no database queries, no server-side rendering overhead. The Time to First Byte is essentially the network latency to your nearest edge node. You can't beat physics."
+									"text": "Choose a base palette of whites, creams, and warm grays. This creates a sense of spaciousness and calm. Then add warmth through texture: a linen sofa, a wool rug, wooden accents. The interplay of textures keeps the room from feeling sterile."
 								}
 							]
 						},
 						{
 							"_type": "block",
+							"style": "h2",
+							"children": [{ "_type": "span", "text": "Choose Quality Over Quantity" }]
+						},
+						{
+							"_type": "block",
 							"style": "normal",
 							"children": [
 								{
 									"_type": "span",
-									"text": "And when you do need dynamic behavior, you can add it surgically. An island of interactivity in a sea of static HTML. The best of both worlds, without paying the cost of either at all times."
+									"text": "Instead of filling the room with furniture, invest in a few pieces you truly love. A well-made sofa, a solid wood coffee table, one statement lamp. These anchor pieces do the heavy lifting, and everything else is just supporting cast."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [{ "_type": "span", "text": "Embrace Empty Space" }]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Empty space isn't wasted space — it's breathing room. Resist the urge to fill every corner. Let the floor have visible areas. Leave walls with room between artwork. The negative space makes what you do display feel more impactful."
 								}
 							]
 						}
 					]
 				},
-				"bylines": [{ "byline": "byline-editorial" }],
+				"bylines": [{ "byline": "byline-team" }],
 				"taxonomies": {
-					"category": ["development"],
-					"tag": ["webdev", "opinion"]
+					"category": ["living-room", "minimalist-living-room"],
+					"tag": ["small-space", "color-palette"]
 				}
 			},
 			{
 				"id": "post-3",
-				"slug": "learning-in-public",
+				"slug": "small-kitchen-organization-hacks",
 				"status": "published",
 				"data": {
-					"title": "Learning in Public",
-					"excerpt": "Writing about what you're learning is the fastest way to find out what you don't actually understand.",
+					"title": "15 Small Kitchen Organization Hacks That Actually Work",
+					"excerpt": "Maximize every inch of your small kitchen with these clever storage and organization ideas.",
 					"featured_image": {
 						"$media": {
-							"url": "https://images.unsplash.com/photo-1432821596592-e2c18b78144f?w=1200&h=800&fit=crop",
-							"alt": "Notebook and pen on a desk",
-							"filename": "learning-in-public.jpg"
+							"url": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&h=800&fit=crop",
+							"alt": "Well-organized small kitchen with open shelving",
+							"filename": "kitchen-organization.jpg"
 						}
 					},
 					"content": [
@@ -438,24 +593,14 @@
 							"children": [
 								{
 									"_type": "span",
-									"text": "I started writing about things I was learning not because I had anything original to say, but because I kept forgetting what I'd figured out. The blog posts were notes to my future self, published publicly more out of laziness than courage."
-								}
-							]
-						},
-						{
-							"_type": "block",
-							"style": "normal",
-							"children": [
-								{
-									"_type": "span",
-									"text": "What I didn't expect was how much the writing itself would accelerate the learning. There's a particular kind of clarity that comes from trying to explain something to someone else. The gaps in your understanding, which you can happily ignore when the knowledge lives only in your head, become painfully obvious when you try to put it into sentences."
+									"text": "A small kitchen doesn't have to feel cramped. With the right organization strategies, you can make even the tiniest galley kitchen feel spacious and functional. The secret? Going vertical, using hidden spaces, and being ruthless about what you actually need."
 								}
 							]
 						},
 						{
 							"_type": "block",
 							"style": "h2",
-							"children": [{ "_type": "span", "text": "The fear of being wrong" }]
+							"children": [{ "_type": "span", "text": "Use the Inside of Cabinet Doors" }]
 						},
 						{
 							"_type": "block",
@@ -463,39 +608,60 @@
 							"children": [
 								{
 									"_type": "span",
-									"text": "The biggest barrier isn't time or writing skill. It's the fear of publishing something that turns out to be wrong. But here's the thing: being wrong publicly is one of the most efficient ways to learn. Someone will correct you, often kindly, and you'll remember that correction forever."
+									"text": "This is prime real estate that most people ignore. Mount adhesive hooks for measuring cups, a small rack for spices, or a magnetic strip for knives. Every inch of storage you reclaim from cabinet doors is an inch you free up on your countertop."
 								}
 							]
 						},
 						{
 							"_type": "block",
+							"style": "h2",
+							"children": [{ "_type": "span", "text": "Go Vertical with Open Shelving" }]
+						},
+						{
+							"_type": "block",
 							"style": "normal",
 							"children": [
 								{
 									"_type": "span",
-									"text": "The posts that helped me most weren't written by experts. They were written by people one step ahead of me on the same path, in language that hadn't yet been polished into abstraction. There's a place for that kind of writing, and it's more valuable than most people realize."
+									"text": "If you have empty wall space, put up open shelves. They make the kitchen feel larger, keep frequently used items within reach, and give you a chance to display your prettiest dishes. Keep them curated — not every mug needs to be on display."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [{ "_type": "span", "text": "Decant and Label" }]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Transferring pantry staples into matching containers isn't just aesthetic — it actually saves space and helps you see what you have at a glance. Clear glass jars or uniform canisters look beautiful on open shelving and prevent the pantry chaos that plagues small kitchens."
 								}
 							]
 						}
 					]
 				},
+				"bylines": [{ "byline": "byline-team" }],
 				"taxonomies": {
-					"category": ["notes"],
-					"tag": ["opinion"]
+					"category": ["kitchen", "kitchen-organization"],
+					"tag": ["organization", "small-space"]
 				}
 			},
 			{
 				"id": "post-4",
-				"slug": "small-tools-big-impact",
+				"slug": "diy-thrift-store-vase-makeover",
 				"status": "published",
 				"data": {
-					"title": "Small Tools, Big Impact",
-					"excerpt": "The best developer tools do one thing well and get out of your way. A love letter to focused software.",
+					"title": "DIY Thrift Store Vase Makeover: From Dollar Store to Designer Look",
+					"excerpt": "Turn a plain thrift store vase into a stunning centerpiece with just paint and a little patience.",
 					"featured_image": {
 						"$media": {
-							"url": "https://images.unsplash.com/photo-1575026615908-666710ae5e47?w=1200&h=800&fit=crop",
-							"alt": "Wrenches and hand tools hanging on a workshop wall",
-							"filename": "small-tools.jpg"
+							"url": "https://images.unsplash.com/photo-1581783898377-1c85bf937427?w=1200&h=800&fit=crop",
+							"alt": "Beautiful ceramic vases in neutral tones",
+							"filename": "thrift-vase-makeover.jpg"
 						}
 					},
 					"content": [
@@ -505,24 +671,14 @@
 							"children": [
 								{
 									"_type": "span",
-									"text": "There's a class of software that doesn't get enough appreciation. Not the frameworks or the platforms or the IDEs, but the small, sharp tools that solve one problem so well you stop thinking about them. They become invisible, which is the highest compliment you can pay a tool."
-								}
-							]
-						},
-						{
-							"_type": "block",
-							"style": "normal",
-							"children": [
-								{
-									"_type": "span",
-									"text": "I'm talking about things like ripgrep, which searches code so fast it changed how I think about searching. Or jq, which makes JSON feel like a first-class data format in the terminal. Or curl, which has been quietly powering the internet's plumbing for decades."
+									"text": "One of my favorite things to do on a Saturday morning is hit up the local thrift store with a coffee in hand. Last week, I found a set of three plain glass vases for $4 total. They were the kind you'd walk right past — generic, slightly dated, nothing special. But with some chalk paint and textured spray, they became the stars of my bookshelf."
 								}
 							]
 						},
 						{
 							"_type": "block",
 							"style": "h2",
-							"children": [{ "_type": "span", "text": "The Unix philosophy, revisited" }]
+							"children": [{ "_type": "span", "text": "What You'll Need" }]
 						},
 						{
 							"_type": "block",
@@ -530,39 +686,45 @@
 							"children": [
 								{
 									"_type": "span",
-									"text": "Do one thing well. The advice is old enough to be a cliche, but the best modern tools still follow it. They don't try to be platforms. They don't have plugin ecosystems or configuration languages or startup wizards. They do their job and they compose with other tools that do theirs."
+									"text": "Chalk paint in your chosen color (I used a warm taupe), fine-grit sandpaper, matte clear sealant, and painter's tape if you want clean lines. Total cost: about $15 for supplies that will makeover dozens of vases."
 								}
 							]
 						},
 						{
 							"_type": "block",
+							"style": "h2",
+							"children": [{ "_type": "span", "text": "The Process" }]
+						},
+						{
+							"_type": "block",
 							"style": "normal",
 							"children": [
 								{
 									"_type": "span",
-									"text": "The temptation is always to add more. One more feature, one more option, one more integration. But every addition is a decision someone has to make, a path through the code that has to be maintained, a thing that can break. The best tools resist this. They stay small, and in staying small, they stay reliable."
+									"text": "Clean the vase thoroughly with rubbing alcohol. Apply two thin coats of chalk paint, letting each coat dry completely. Once dry, lightly sand any drips or rough spots. Finish with a matte sealant for durability. The whole process takes about an hour of active work, plus drying time."
 								}
 							]
 						}
 					]
 				},
+				"bylines": [{ "byline": "byline-team" }],
 				"taxonomies": {
-					"category": ["development"],
-					"tag": ["tools"]
+					"category": ["diy", "diy-decor-projects", "thrift-store-makeovers"],
+					"tag": ["diy", "budget-friendly", "before-after"]
 				}
 			},
 			{
 				"id": "post-5",
-				"slug": "designing-with-constraints",
+				"slug": "farmhouse-style-guide",
 				"status": "published",
 				"data": {
-					"title": "Designing with Constraints",
-					"excerpt": "Limitations aren't obstacles to creativity. They're the structure that makes creativity possible.",
+					"title": "Farmhouse Style Guide: How to Get the Look Without Going Full Joanna Gaines",
+					"excerpt": "Modern farmhouse decor is about warmth and character, not mason jars everywhere. Here's how to nail the look.",
 					"featured_image": {
 						"$media": {
-							"url": "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=1200&h=800&fit=crop",
-							"alt": "Pencils and design tools on a desk",
-							"filename": "designing-with-constraints.jpg"
+							"url": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&h=800&fit=crop",
+							"alt": "Modern farmhouse living room with exposed wood beams",
+							"filename": "farmhouse-style.jpg"
 						}
 					},
 					"content": [
@@ -572,24 +734,14 @@
 							"children": [
 								{
 									"_type": "span",
-									"text": "Give a designer a blank canvas and unlimited time, and they'll often produce something mediocre. Give them a tight brief, a small screen, and a deadline, and they'll surprise you. This isn't a paradox - it's how creativity actually works."
-								}
-							]
-						},
-						{
-							"_type": "block",
-							"style": "normal",
-							"children": [
-								{
-									"_type": "span",
-									"text": "Constraints force decisions. When you can't use more than two typefaces, you have to choose carefully. When the page has to load in under a second, every element earns its place. When the interface has to work on a 320px screen, you discover what's truly essential."
+									"text": "Modern farmhouse style has evolved well beyond the shiplap-and-mason-jar aesthetic. Today's farmhouse decor is about warmth, natural materials, and a lived-in feeling that makes a house feel like home. Here's how to get the look with intention."
 								}
 							]
 						},
 						{
 							"_type": "block",
 							"style": "h2",
-							"children": [{ "_type": "span", "text": "Embracing the box" }]
+							"children": [{ "_type": "span", "text": "Key Elements" }]
 						},
 						{
 							"_type": "block",
@@ -597,39 +749,45 @@
 							"children": [
 								{
 									"_type": "span",
-									"text": "The web itself is a constraint. HTML flows in one direction. CSS has a box model. Browsers have viewport sizes and font rendering quirks. You can fight these constraints or you can work with them, and the results are dramatically different."
+									"text": "Natural wood tones, soft whites and creams, vintage-inspired fixtures, and plenty of texture. Think linen curtains, wooden cutting boards displayed on open shelves, and a well-worn leather chair. The goal is comfortable, not contrived."
 								}
 							]
 						},
 						{
 							"_type": "block",
+							"style": "h2",
+							"children": [{ "_type": "span", "text": "What to Avoid" }]
+						},
+					{
+							"_type": "block",
 							"style": "normal",
 							"children": [
 								{
 									"_type": "span",
-									"text": "The designs I admire most don't look like they were forced through a framework. They look like they grew naturally from the medium, respecting its grain rather than working against it. That only happens when you treat constraints as creative partners rather than enemies."
+									"text": "Signs that say 'Gather' or 'Farm Fresh.' Matching sets of anything. Too much distressed white furniture. The farmhouse look works best when it feels collected over time, not purchased all at once from the same store."
 								}
 							]
 						}
 					]
 				},
+				"bylines": [{ "byline": "byline-team" }],
 				"taxonomies": {
-					"category": ["design"],
-					"tag": ["creativity"]
+					"category": ["style-guides", "farmhouse"],
+					"tag": ["color-palette"]
 				}
 			},
 			{
 				"id": "post-6",
-				"slug": "a-weekend-with-a-side-project",
+				"slug": "renter-friendly-decor-ideas",
 				"status": "published",
 				"data": {
-					"title": "A Weekend with a Side Project",
-					"excerpt": "No stakeholders, no deadlines, no Jira tickets. Just you and a dumb idea that might turn into something.",
+					"title": "10 Renter-Friendly Decor Ideas That Won't Risk Your Deposit",
+					"excerpt": "Make your rental feel like home without making any permanent changes. These ideas are landlord-approved.",
 					"featured_image": {
 						"$media": {
-							"url": "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=1200&h=800&fit=crop",
-							"alt": "Code on a screen with a dark theme",
-							"filename": "weekend-side-project.jpg"
+							"url": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=1200&h=800&fit=crop",
+							"alt": "Bright rental apartment with plants and art",
+							"filename": "renter-friendly-decor.jpg"
 						}
 					},
 					"content": [
@@ -639,24 +797,14 @@
 							"children": [
 								{
 									"_type": "span",
-									"text": "Saturday morning. Coffee's made, the house is quiet, and I've got an idea that's been nagging at me all week. Not a good idea, necessarily - just a persistent one. A small tool that does a thing I keep doing manually. How hard could it be?"
-								}
-							]
-						},
-						{
-							"_type": "block",
-							"style": "normal",
-							"children": [
-								{
-									"_type": "span",
-									"text": "This is the best kind of programming. No requirements document, no sprint planning, no pull request reviews. Just a text editor and a problem. The freedom to make terrible architectural decisions, rewrite everything twice, and follow tangents that turn out to be dead ends."
+									"text": "Renting doesn't mean you have to live with beige walls and builder-grade fixtures. There are so many ways to personalize your space without drilling holes, painting walls, or making any permanent changes. Here are ten of my favorites."
 								}
 							]
 						},
 						{
 							"_type": "block",
 							"style": "h2",
-							"children": [{ "_type": "span", "text": "Why side projects matter" }]
+							"children": [{ "_type": "span", "text": "1. Removable Wallpaper" }]
 						},
 						{
 							"_type": "block",
@@ -664,66 +812,14 @@
 							"children": [
 								{
 									"_type": "span",
-									"text": "Side projects are where you learn things your day job would never teach you. Not because the problems are harder, but because you're free to take risks. Try a language you've never used. Build something without a framework. Deploy to a platform you've only read about. The stakes are zero, which makes the learning maximum."
-								}
-							]
-						},
-						{
-							"_type": "block",
-							"style": "normal",
-							"children": [
-								{
-									"_type": "span",
-									"text": "By Sunday evening, the thing sort of works. It's rough, the error handling is nonexistent, and the README is a single sentence. But it solves the problem I set out to solve, and I learned three things I didn't know on Friday. Not a bad weekend."
-								}
-							]
-						}
-					]
-				},
-				"taxonomies": {
-					"category": ["development"],
-					"tag": ["creativity"]
-				}
-			},
-			{
-				"id": "post-7",
-				"slug": "notes-on-simplicity",
-				"status": "published",
-				"data": {
-					"title": "Notes on Simplicity",
-					"excerpt": "Simplicity isn't the absence of complexity. It's the result of understanding a problem well enough to solve it cleanly.",
-					"featured_image": {
-						"$media": {
-							"url": "https://images.unsplash.com/photo-1559051668-e1fa58f25786?w=1200&h=800&fit=crop",
-							"alt": "Geometric pattern carved into white paper",
-							"filename": "notes-on-simplicity.jpg"
-						}
-					},
-					"content": [
-						{
-							"_type": "block",
-							"style": "normal",
-							"children": [
-								{
-									"_type": "span",
-									"text": "Every piece of software starts simple. A few files, a clear purpose, a small surface area. Then features get added, edge cases get handled, and before long you're looking at something that requires a diagram to understand. This isn't inevitable, but it takes discipline to prevent."
-								}
-							]
-						},
-						{
-							"_type": "block",
-							"style": "normal",
-							"children": [
-								{
-									"_type": "span",
-									"text": "The hard part of simplicity isn't the initial design. It's the ongoing resistance to complication. Every feature request, every bug fix, every refactor is an opportunity to add complexity. Saying no is the most important design skill, and the least celebrated."
+									"text": "Modern peel-and-stick wallpaper is a game-changer for renters. Use it on an accent wall, inside bookshelves, or even on furniture. It comes in every pattern imaginable and removes cleanly when your lease is up. Just be sure to buy from a reputable brand — cheap versions can damage paint."
 								}
 							]
 						},
 						{
 							"_type": "block",
 							"style": "h2",
-							"children": [{ "_type": "span", "text": "Removing as a feature" }]
+							"children": [{ "_type": "span", "text": "2. Swap Out Hardware" }]
 						},
 						{
 							"_type": "block",
@@ -731,25 +827,16 @@
 							"children": [
 								{
 									"_type": "span",
-									"text": "The best version of a product often has fewer features than the previous one. Not because features were missing, but because someone had the courage to remove things that weren't earning their keep. Every feature has a cost - in maintenance, in cognitive load, in the weight of the interface."
-								}
-							]
-						},
-						{
-							"_type": "block",
-							"style": "normal",
-							"children": [
-								{
-									"_type": "span",
-									"text": "Simplicity is a practice, not a destination. You never arrive at simple. You just keep asking: is this necessary? Could this be clearer? Is there a way to solve this problem by removing something instead of adding something? The answer is yes more often than you'd expect."
+									"text": "Dated cabinet pulls and door handles can make an entire room feel old. Replacing them with modern brass or matte black hardware is a five-minute upgrade that makes a huge difference. Keep the originals in a bag and swap them back before moving out."
 								}
 							]
 						}
 					]
 				},
+				"bylines": [{ "byline": "byline-team" }],
 				"taxonomies": {
-					"category": ["notes"],
-					"tag": ["opinion"]
+					"category": ["living-room", "small-space-living"],
+					"tag": ["renter-friendly", "budget-friendly", "small-space"]
 				}
 			},
 			{
