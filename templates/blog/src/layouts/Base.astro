@@ -119,28 +119,44 @@ const isLoggedIn = !!Astro.locals.user;
 						resultClass="site-search-result"
 						collections={["posts", "pages"]}
 					/>
-					<button class="nav-hamburger" type="button" aria-label="Menu" id="nav-hamburger-btn">
-						<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+					<button class="nav-hamburger" type="button" aria-label="Menu" id="nav-hamburger-btn" aria-expanded="false">
+						<svg class="hamburger-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+						<svg class="close-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
 					</button>
-					<div class="nav-links" id="nav-links">
-						{
-							menu?.items.map((item) => (
-								<a href={item.url} target={item.target}>
-									{item.label}
-								</a>
-							))
-						}
-					</div>
-					{
-						isLoggedIn && (
-							<a href="/_emdash/admin" class="nav-admin">
-								Admin
-							</a>
-						)
-					}
 				</div>
 			</nav>
 		</header>
+
+		<!-- Mobile menu overlay -->
+		<div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+
+		<!-- Mobile menu drawer -->
+		<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+			<div class="mobile-menu-header">
+				<span class="mobile-menu-title">Menu</span>
+				<button class="mobile-menu-close" id="mobile-menu-close" aria-label="Close menu">
+					<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+				</button>
+			</div>
+			<div class="mobile-menu-links" id="mobile-menu-links">
+				{
+					menu?.items.map((item) => (
+						<a href={item.url} target={item.target} class="mobile-menu-link">
+							{item.label}
+						</a>
+					))
+				}
+			</div>
+			<div class="mobile-menu-footer">
+				{
+					isLoggedIn && (
+						<a href="/_emdash/admin" class="mobile-menu-admin">
+							Admin
+						</a>
+					)
+				}
+			</div>
+		</div>
 
 		<main>
 			<slot />
@@ -287,13 +303,38 @@ const isLoggedIn = !!Astro.locals.user;
 		</footer>
 
 		<script>
-			// Hamburger menu toggle
+			// Mobile menu
 			const hamburger = document.getElementById("nav-hamburger-btn");
-			const navLinks = document.getElementById("nav-links");
+			const mobileMenu = document.getElementById("mobile-menu");
+			const mobileOverlay = document.getElementById("mobile-menu-overlay");
+			const mobileClose = document.getElementById("mobile-menu-close");
+
+			function openMenu() {
+				mobileMenu?.classList.add("mobile-menu--open");
+				mobileOverlay?.classList.add("mobile-menu-overlay--visible");
+				hamburger?.setAttribute("aria-expanded", "true");
+				hamburger?.classList.add("is-open");
+				document.body.style.overflow = "hidden";
+			}
+
+			function closeMenu() {
+				mobileMenu?.classList.remove("mobile-menu--open");
+				mobileOverlay?.classList.remove("mobile-menu-overlay--visible");
+				hamburger?.setAttribute("aria-expanded", "false");
+				hamburger?.classList.remove("is-open");
+				document.body.style.overflow = "";
+			}
+
 			hamburger?.addEventListener("click", () => {
-				navLinks?.classList.toggle("nav-links--open");
-				const isOpen = navLinks?.classList.contains("nav-links--open");
-				hamburger.setAttribute("aria-expanded", String(isOpen));
+				const isOpen = mobileMenu?.classList.contains("mobile-menu--open");
+				isOpen ? closeMenu() : openMenu();
+			});
+
+			mobileClose?.addEventListener("click", closeMenu);
+			mobileOverlay?.addEventListener("click", closeMenu);
+
+			document.addEventListener("keydown", (e) => {
+				if (e.key === "Escape") closeMenu();
 			});
 
 			// Theme switcher
@@ -684,6 +725,140 @@ const isLoggedIn = !!Astro.locals.user;
 				opacity: 1;
 			}
 
+			/* Hamburger button */
+			.nav-hamburger {
+				display: none;
+				align-items: center;
+				justify-content: center;
+				width: 36px;
+				height: 36px;
+				background: transparent;
+				border: 1px solid var(--color-border);
+				border-radius: var(--radius);
+				color: var(--color-text);
+				cursor: pointer;
+				transition: background var(--transition-fast);
+				flex-shrink: 0;
+			}
+
+			.nav-hamburger:hover {
+				background: var(--color-surface);
+			}
+
+			.nav-hamburger .close-icon {
+				display: none;
+			}
+
+			.nav-hamburger.is-open .hamburger-icon {
+				display: none;
+			}
+
+			.nav-hamburger.is-open .close-icon {
+				display: block;
+			}
+
+			/* Mobile menu overlay */
+			.mobile-menu-overlay {
+				display: none;
+				position: fixed;
+				inset: 0;
+				background: rgba(0, 0, 0, 0.5);
+				z-index: 200;
+				opacity: 0;
+				transition: opacity 0.3s ease;
+			}
+
+			.mobile-menu-overlay--visible {
+				display: block;
+				opacity: 1;
+			}
+
+			/* Mobile menu drawer */
+			.mobile-menu {
+				position: fixed;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				width: 75%;
+				max-width: 360px;
+				background: var(--color-bg);
+				z-index: 201;
+				transform: translateX(100%);
+				transition: transform 0.3s ease;
+				display: flex;
+				flex-direction: column;
+				box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+			}
+
+			.mobile-menu--open {
+				transform: translateX(0);
+			}
+
+			.mobile-menu-header {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				padding: var(--spacing-4) var(--spacing-5);
+				border-bottom: 1px solid var(--color-border);
+			}
+
+			.mobile-menu-title {
+				font-family: var(--font-serif);
+				font-size: var(--font-size-lg);
+				font-weight: 600;
+				color: var(--color-text);
+			}
+
+			.mobile-menu-close {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 36px;
+				height: 36px;
+				background: transparent;
+				border: 1px solid var(--color-border);
+				border-radius: var(--radius);
+				color: var(--color-text);
+				cursor: pointer;
+				transition: background var(--transition-fast);
+			}
+
+			.mobile-menu-close:hover {
+				background: var(--color-surface);
+			}
+
+			.mobile-menu-links {
+				flex: 1;
+				overflow-y: auto;
+				padding: var(--spacing-4) 0;
+			}
+
+			.mobile-menu-link {
+				display: block;
+				padding: var(--spacing-4) var(--spacing-5);
+				font-size: var(--font-size-base);
+				color: var(--color-text);
+				text-decoration: none;
+				border-bottom: 1px solid var(--color-border-subtle);
+				transition: background var(--transition-fast), color var(--transition-fast);
+			}
+
+			.mobile-menu-link:hover {
+				background: var(--color-surface);
+				color: var(--color-accent);
+			}
+
+			.mobile-menu-footer {
+				padding: var(--spacing-4) var(--spacing-5);
+				border-top: 1px solid var(--color-border);
+			}
+
+			.mobile-menu-admin {
+				font-size: var(--font-size-sm);
+				color: var(--color-muted);
+				text-decoration: none;
+			}
+
 			/* Search styling */
 			.site-search {
 				position: relative;
@@ -1016,55 +1191,24 @@ const isLoggedIn = !!Astro.locals.user;
 				}
 			}
 
-			@media (max-width: 1024px) {
+			/* Mobile: show hamburger, hide desktop nav links */
+			@media (max-width: 768px) {
 				.nav-links {
 					display: none;
 				}
 
-				.nav-links.nav-links--open {
-					display: flex;
-					flex-direction: column;
-					gap: 0;
-					width: 100%;
-					padding: var(--spacing-3) 0 0;
-					border-top: 1px solid var(--color-border-subtle);
-				}
-
-				.nav-links.nav-links--open a {
-					padding: var(--spacing-3) 0;
-					border-bottom: 1px solid var(--color-border-subtle);
-					font-size: var(--font-size-base);
-				}
-
-				.nav-links.nav-links--open a:last-child {
-					border-bottom: none;
-				}
-
-				.nav-right {
-					display: flex;
-					align-items: center;
-					gap: var(--spacing-4);
-				}
-
 				.nav-hamburger {
 					display: flex;
-					flex-shrink: 0;
 				}
 			}
 
+			/* Mobile small: logo smaller, search compact */
 			@media (max-width: 640px) {
 				.site-header {
 					position: relative;
-					border-bottom: none;
 				}
 
 				.nav {
-					flex-direction: row;
-					flex-wrap: wrap;
-					justify-content: space-between;
-					align-items: center;
-					height: auto;
-					gap: var(--spacing-2);
 					padding: var(--spacing-3) var(--spacing-4);
 				}
 
@@ -1077,61 +1221,17 @@ const isLoggedIn = !!Astro.locals.user;
 				}
 
 				.nav-right {
-					display: flex;
-					align-items: center;
 					gap: var(--spacing-3);
-					order: 1;
-					width: 100%;
-					padding-top: var(--spacing-3);
-					border-top: 1px solid var(--color-border-subtle);
-					margin-top: var(--spacing-2);
-				}
-
-				.nav-hamburger {
-					display: flex;
-					flex-shrink: 0;
-					order: -1;
 				}
 
 				.site-search {
-					max-width: 140px;
+					max-width: 120px;
 				}
 
 				:global(.site-search-input) {
-					width: 140px !important;
+					width: 120px !important;
 					padding: var(--spacing-1) var(--spacing-2) !important;
-					font-size: var(--font-size-sm) !important;
 				}
-
-				.nav-links.nav-links--open {
-					order: unset;
-					width: 100%;
-				}
-
-				.nav-admin {
-					position: absolute;
-					right: var(--spacing-4);
-					top: var(--spacing-3);
-					font-size: var(--font-size-xs);
-				}
-			}
-
-			.nav-hamburger {
-				align-items: center;
-				justify-content: center;
-				width: 36px;
-				height: 36px;
-				background: transparent;
-				border: 1px solid var(--color-border);
-				border-radius: var(--radius);
-				color: var(--color-text);
-				cursor: pointer;
-				transition: background var(--transition-fast);
-				flex-shrink: 0;
-			}
-
-			.nav-hamburger:hover {
-				background: var(--color-surface);
 			}
 		</style>
 
