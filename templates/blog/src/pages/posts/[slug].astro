@@ -595,11 +595,12 @@ const pinterestUrl = `https://pinterest.com/pin/create/button/?url=${encodeURICo
 		display: inline-flex;
 		align-items: center;
 		gap: var(--spacing-1);
-		font-size: var(--font-size-sm);
-		font-weight: 500;
+		font-size: var(--font-size-xs);
+		font-weight: 600;
 		color: #e60023;
 		text-decoration: none;
 		transition: color var(--transition-fast);
+		white-space: nowrap;
 	}
 
 	.pinterest-share-inline:hover {
@@ -608,9 +609,8 @@ const pinterestUrl = `https://pinterest.com/pin/create/button/?url=${encodeURICo
 
 	/* Article content typography */
 	.article-content {
-		font-size: 18px;
+		font-size: 1.125rem;
 		line-height: 1.8;
-		max-width: 720px;
 	}
 
 	.article-content :global(p) {
@@ -874,7 +874,6 @@ const pinterestUrl = `https://pinterest.com/pin/create/button/?url=${encodeURICo
 	.more-grid {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
-		grid-template-rows: repeat(5, auto);
 		gap: var(--spacing-8);
 	}
 
@@ -900,6 +899,10 @@ const pinterestUrl = `https://pinterest.com/pin/create/button/?url=${encodeURICo
 			padding: 0 var(--spacing-4);
 		}
 
+		.article-content {
+			font-size: 1rem;
+		}
+
 		.more-grid {
 			grid-template-columns: repeat(2, 1fr);
 		}
@@ -907,11 +910,29 @@ const pinterestUrl = `https://pinterest.com/pin/create/button/?url=${encodeURICo
 
 	@media (max-width: 600px) {
 		.article-title {
-			font-size: var(--font-size-3xl);
+			font-size: var(--font-size-2xl);
+		}
+
+		.article-excerpt {
+			font-size: var(--font-size-base);
+		}
+
+		.article-meta {
+			gap: var(--spacing-2);
+		}
+
+		.article-content :global(img) {
+			margin: 1.5em -0.5rem;
+			border-radius: var(--radius);
 		}
 
 		.more-grid {
 			grid-template-columns: 1fr;
+			gap: var(--spacing-6);
+		}
+
+		.more-inner {
+			padding: 0 var(--spacing-4);
 		}
 	}
 </style>
